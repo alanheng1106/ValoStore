@@ -99,16 +99,26 @@ export default function MatchDetails() {
                   <tr key={p.puuid} className="hover:bg-white/5 transition-colors group">
                     <td className="p-4">
                       <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 rounded overflow-hidden bg-black/50 border border-white/10">
+                        <div className="w-12 h-12 rounded overflow-hidden bg-black/50 border border-white/10 relative shrink-0">
                           {p.assets?.agent?.small && (
                             <img src={p.assets.agent.small} alt={p.character} className="w-full h-full object-cover group-hover:scale-110 transition-transform" />
                           )}
+                          <div className="absolute bottom-0 inset-x-0 bg-black/70 text-center text-[10px] font-bold text-white border-t border-white/20">
+                            {p.level}
+                          </div>
                         </div>
                         <div>
-                          <div className="font-bold text-white text-lg">
-                            {p.name} <span className="text-gray-500 text-sm font-normal">#{p.tag}</span>
+                          <div className="font-bold text-white text-lg flex items-center">
+                            {p.name} <span className="text-gray-400 text-xs font-medium bg-white/10 px-1.5 py-0.5 rounded ml-2">#{p.tag}</span>
                           </div>
-                          <div className="text-sm text-gray-400 flex items-center gap-2">
+                          <div className="text-sm text-gray-400 flex items-center gap-1.5 mt-0.5">
+                            {p.currenttier > 2 ? (
+                              <img 
+                                src={`https://media.valorant-api.com/competitivetiers/03621f52-342b-cf4e-4f86-9350a49c6d04/${p.currenttier}/smallicon.png`}
+                                alt="rank"
+                                className="w-4 h-4 object-contain"
+                              />
+                            ) : null}
                             {p.currenttier_patched || 'Unrated'}
                           </div>
                         </div>
