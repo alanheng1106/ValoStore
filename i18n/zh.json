@@ -1,0 +1,72 @@
+{
+  "auth": {
+    "login_title": "登录 Riot 账号",
+    "username": "用户名",
+    "password": "密码",
+    "login_btn": "登录",
+    "mfa_title": "多重身份验证",
+    "mfa_desc": "您的账号启用了二步验证，请输入发送至邮箱的验证码。",
+    "mfa_code": "验证码",
+    "mfa_verify_btn": "验证",
+    "logging_in": "登录中...",
+    "security_notice": "您的密码仅用于直接向 Riot 服务器请求临时授权，不会被记录或保存。",
+    "logout": "退出登录",
+    "qr_tab": "扫码登录",
+    "password_tab": "账号密码",
+    "qr_desc": "使用 Riot Mobile 手机 APP 扫描下方二维码登录",
+    "qr_waiting": "等待扫描...",
+    "qr_success": "登录成功！",
+    "qr_expired": "二维码已过期",
+    "qr_refresh": "刷新二维码",
+    "qr_instructions": "打开你手机上的 Riot Mobile，点击扫描按钮，扫描屏幕上的二维码即可完成登录。"
+  },
+  "nav": {
+    "dashboard": "概览",
+    "store": "每日商店",
+    "inventory": "皮肤背包",
+    "matches": "对战记录",
+    "account": "账号信息"
+  },
+  "store": {
+    "daily_offers": "每日特惠",
+    "refreshes_in": "刷新倒计时",
+    "night_market": "夜市特惠",
+    "owned": "已拥有"
+  },
+  "inventory": {
+    "title": "皮肤背包",
+    "sidearms": "手枪",
+    "smgs": "冲锋枪",
+    "shotguns": "霰弹枪",
+    "rifles": "步枪",
+    "sniper_rifles": "狙击枪",
+    "heavy": "重型武器",
+    "melee": "近战武器"
+  },
+  "matches": {
+    "title": "对战记录",
+    "win": "胜利",
+    "loss": "失败",
+    "draw": "平局",
+    "competitive": "竞技模式",
+    "unrated": "普通模式",
+    "deathmatch": "死斗",
+    "spikerush": "炸弹抢攻战",
+    "swiftplay": "极速模式",
+    "kda": "K/D/A",
+    "score": "比分"
+  },
+  "account": {
+    "title": "账号信息",
+    "level": "账号等级",
+    "rank": "当前段位",
+    "wallet": "钱包",
+    "vp": "特权点数 (VP)",
+    "rp": "源能点数 (RP)"
+  },
+  "common": {
+    "loading": "加载中...",
+    "error": "发生错误，请稍后重试",
+    "success": "操作成功"
+  }
+}

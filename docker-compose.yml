@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  valostore:
+    build: .
+    container_name: valostore_app
+    restart: unless-stopped
+    environment:
+      - DATABASE_PATH=/app/data/valostore.db
+      - HENRIK_API_KEY=${HENRIK_API_KEY}
+      # Generate random strings for these if you want better security:
+      - JWT_SECRET=${JWT_SECRET:-default_jwt_secret_valostore}
+      - ENCRYPTION_KEY=${ENCRYPTION_KEY:-0123456789abcdef0123456789abcdef}
+    volumes:
+      - valostore_data:/app/data
+    ports:
+      - "3000:3000"
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1
+
+volumes:
+  valostore_data:

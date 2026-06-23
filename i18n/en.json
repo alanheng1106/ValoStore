@@ -1,0 +1,72 @@
+{
+  "auth": {
+    "login_title": "Login to Riot",
+    "username": "Username",
+    "password": "Password",
+    "login_btn": "Login",
+    "mfa_title": "Multi-Factor Authentication",
+    "mfa_desc": "Your account has 2FA enabled. Please enter the code sent to your email.",
+    "mfa_code": "Verification Code",
+    "mfa_verify_btn": "Verify",
+    "logging_in": "Logging in...",
+    "security_notice": "Your password is only used to directly request temporary authorization from Riot servers and is not logged or saved.",
+    "logout": "Logout",
+    "qr_tab": "QR Code",
+    "password_tab": "Password",
+    "qr_desc": "Scan the QR code below with Riot Mobile to log in",
+    "qr_waiting": "Waiting for scan...",
+    "qr_success": "Login Successful!",
+    "qr_expired": "QR code expired",
+    "qr_refresh": "Refresh QR Code",
+    "qr_instructions": "Open Riot Mobile on your phone, tap the scan button, and scan the QR code on screen to log in."
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "store": "Daily Store",
+    "inventory": "Inventory",
+    "matches": "Match History",
+    "account": "Account Info"
+  },
+  "store": {
+    "daily_offers": "Daily Offers",
+    "refreshes_in": "Refreshes in",
+    "night_market": "Night Market",
+    "owned": "Owned"
+  },
+  "inventory": {
+    "title": "Skin Inventory",
+    "sidearms": "Sidearms",
+    "smgs": "SMGs",
+    "shotguns": "Shotguns",
+    "rifles": "Rifles",
+    "sniper_rifles": "Sniper Rifles",
+    "heavy": "Heavy Weapons",
+    "melee": "Melee"
+  },
+  "matches": {
+    "title": "Match History",
+    "win": "VICTORY",
+    "loss": "DEFEAT",
+    "draw": "DRAW",
+    "competitive": "Competitive",
+    "unrated": "Unrated",
+    "deathmatch": "Deathmatch",
+    "spikerush": "Spike Rush",
+    "swiftplay": "Swiftplay",
+    "kda": "K/D/A",
+    "score": "Score"
+  },
+  "account": {
+    "title": "Account Info",
+    "level": "Account Level",
+    "rank": "Current Rank",
+    "wallet": "Wallet",
+    "vp": "Valorant Points (VP)",
+    "rp": "Radianite Points (RP)"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "An error occurred. Please try again later.",
+    "success": "Success"
+  }
+}
