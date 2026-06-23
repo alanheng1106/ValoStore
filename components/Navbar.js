@@ -11,6 +11,16 @@ export default function Navbar() {
   const pathname = usePathname();
   const { t } = useI18n();
 
+  const handleLogout = async () => {
+    try {
+      await fetch("/api/auth/logout", { method: "POST" });
+      window.location.href = "/";
+    } catch (e) {
+      console.error(e);
+      window.location.href = "/";
+    }
+  };
+
   const links = [
     { href: "/dashboard", label: "nav.dashboard" },
     { href: "/dashboard/store", label: "nav.store" },
@@ -55,7 +65,10 @@ export default function Navbar() {
               </Link>
             );
           })}
-          <button className="w-full text-left px-4 py-3 text-gray-400 hover:text-white mt-4 border-t border-white/10">
+          <button 
+            onClick={handleLogout}
+            className="w-full text-left px-4 py-3 text-gray-400 hover:text-[#FF4655] transition-colors mt-4 border-t border-white/10"
+          >
             {t("auth.logout")}
           </button>
         </nav>

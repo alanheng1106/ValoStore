@@ -9,6 +9,16 @@ export default function Sidebar() {
   const pathname = usePathname();
   const { t } = useI18n();
 
+  const handleLogout = async () => {
+    try {
+      await fetch("/api/auth/logout", { method: "POST" });
+      window.location.href = "/";
+    } catch (e) {
+      console.error(e);
+      window.location.href = "/";
+    }
+  };
+
   const links = [
     { href: "/dashboard", label: "nav.dashboard", icon: <LayoutDashboard size={20} /> },
     { href: "/dashboard/store", label: "nav.store", icon: <ShoppingCart size={20} /> },
@@ -44,7 +54,10 @@ export default function Sidebar() {
       </nav>
 
       <div className="p-4 border-t border-white/5">
-        <button className="w-full flex items-center justify-center gap-2 py-2 text-sm text-gray-400 hover:text-[#FF4655] transition-colors group">
+        <button 
+          onClick={handleLogout}
+          className="w-full flex items-center justify-center gap-2 py-2 text-sm text-gray-400 hover:text-[#FF4655] transition-colors group"
+        >
           <LogOut size={16} className="opacity-80 group-hover:opacity-100" />
           <span>{t("auth.logout")}</span>
         </button>
