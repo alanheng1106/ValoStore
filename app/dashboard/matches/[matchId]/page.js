@@ -109,9 +109,6 @@ export default function MatchDetails() {
                             {p.name} <span className="text-gray-500 text-sm font-normal">#{p.tag}</span>
                           </div>
                           <div className="text-sm text-gray-400 flex items-center gap-2">
-                            {p.assets?.card?.small && (
-                              <img src={p.assets.card.small} alt="banner" className="w-6 h-2 object-cover rounded-sm hidden md:block" />
-                            )}
                             {p.currenttier_patched || 'Unrated'}
                           </div>
                         </div>
