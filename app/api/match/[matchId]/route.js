@@ -4,7 +4,8 @@ import db from '@/lib/db';
 
 export async function GET(request, { params }) {
   try {
-    const { matchId } = params;
+    const paramsResolved = await params;
+    const { matchId } = paramsResolved;
     const tokens = await getRiotTokens();
     if (!tokens) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
