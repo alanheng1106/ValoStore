@@ -30,10 +30,14 @@ export async function GET() {
     const enrichedOffers = offers.map(offerUuid => {
       const skinInfo = allSkins.find(s => s.levels[0].uuid === offerUuid);
       let tierColor = 'gray';
+      let tierIcon = null;
       
       if (skinInfo && contentTiers) {
         const tierInfo = contentTiers.find(t => t.uuid === skinInfo.contentTierUuid);
-        if (tierInfo) tierColor = `#${tierInfo.highlightColor}`;
+        if (tierInfo) {
+          tierColor = `#${tierInfo.highlightColor}`;
+          tierIcon = tierInfo.displayIcon;
+        }
       }
       
       const priceInfo = storefront.SkinsPanelLayout.SingleItemStoreOffers.find(o => o.OfferID === offerUuid);
@@ -44,11 +48,43 @@ export async function GET() {
         name: skinInfo ? skinInfo.displayName : 'Unknown Skin',
         icon: skinInfo && skinInfo.displayIcon ? skinInfo.displayIcon : null,
         cost: cost,
-        tierColor
+        tierColor,
+        tierIcon
       };
     });
 
+    // Process Featured Bundle
+    let featuredBundleData = null;
+    if (storefront.FeaturedBundle && storefront.FeaturedBundle.Bundles && storefront.FeaturedBundle.Bundles.length > 0) {
+      const bundle = storefront.FeaturedBundle.Bundles[0];
+      const bundleId = bundle.DataAssetID;
+      
+      try {
+        const bundleRes = await fetch(`https://valorant-api.com/v1/bundles/${bundleId}`);
+        const bundleJson = await bundleRes.json();
+        const bundleMeta = bundleJson.data;
+
+        let totalPrice = 0;
+        if (bundle.Items) {
+          bundle.Items.forEach(item => {
+            totalPrice += item.DiscountedPrice || item.BasePrice || 0;
+          });
+        }
+
+        featuredBundleData = {
+          uuid: bundleId,
+          name: bundleMeta ? bundleMeta.displayName : 'Featured Bundle',
+          icon: bundleMeta ? (bundleMeta.displayIcon2 || bundleMeta.displayIcon) : null,
+          cost: totalPrice,
+          refreshIn: bundle.DurationRemainingInSeconds
+        };
+      } catch (err) {
+        console.error('Failed to fetch bundle meta:', err);
+      }
+    }
+
     const storeData = {
+      featuredBundle: featuredBundleData,
       dailyOffers: enrichedOffers,
       refreshIn: dailyRemaining
     };
