@@ -25,7 +25,17 @@ export async function POST(request) {
     }
 
     if (authRes.data?.type === 'error' || !authRes.data?.response?.parameters?.uri) {
-      return NextResponse.json({ error: 'Authentication failed. Please check your credentials.' }, { status: 401 });
+      console.error('Riot Auth Failure:', JSON.stringify(authRes.data));
+      const riotError = authRes.data?.error || 'Authentication failed.';
+      const isCaptcha = authRes.data?.captcha || riotError.includes('captcha');
+      
+      let errorMessage = 'Authentication failed. Please check your credentials.';
+      if (isCaptcha) {
+        errorMessage = 'Riot requires a captcha challenge which is not supported here. Please use QR Login.';
+      } else if (riotError) {
+        errorMessage = `Login Failed: ${riotError}`;
+      }
+      return NextResponse.json({ error: errorMessage }, { status: 401 });
     }
 
     // Auth Success
